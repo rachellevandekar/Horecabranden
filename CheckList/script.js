@@ -166,20 +166,30 @@ function vorigeGebruiker() {
 }
 
 */
+function stringify (x) {
+    console.log(Object.prototype.toString.call(x));
+}
+function renderChecklist() {
 
-function renderChecklist(gebruiker) {
-
-    let gebruikerItem = gebruikerChecklists.gebruiker;
-    let listItems = gebruikerChecklists.listItems;
+    let counter = 0;
+    /*let gebruikerItem = gebruikerChecklists.gebruiker;
+    let listItems = gebruikerChecklists.gebruiker;
     //gebruiker weergeven
     gebruikerElement.innerText = gebruiker;
 
-    //antwoorden weergeven, loop en maak button met antwoord
-    gebruiker.listItems.forEach(listItems => {
-        const label = document.createElement('label');
-        label.innerText = listItems.text;
-        label.classList.add('checkbox');
-    })
+     */
+    let q = gebruikerChecklists[gebruikerNummer];
+    //gebruiker weergeven
+    gebruikerElement.innerText = q.gebruiker;
+
+
+    let innerHTML = "";
+    q.listItems.forEach(listItem => {
+            innerHTML += `<input type="checkbox" class="list-item">
+            <label>${listItem.text}</label><br>`
+    });
+    checkListElement.innerHTML = innerHTML;
+
 
 }
 function checkboxCheck(){
