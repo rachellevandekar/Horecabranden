@@ -6,34 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
 
     <div id="container">
-        <div id="start">Start quiz</div>
-        <div id="quiz" style="display: none;">
-            <div id="question">
-                <p>Question</p>
-            </div>
+        <div id="quiz" class="hide">
+            <div id="question"> Question </div>
 
-            <div id="choices">
-                <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
-                <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
-                <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
-                <div class="choice" id="D" onclick="checkAnswer('D')">D</div>
-            </div>
-
-
-            <div id="progress">
-                <div class="prog"></div>
+            <div id="answer-buttons" class="btn-flex">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
             </div>
         </div>
-        <div id="scoreContainer" style="display: none;">
+
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn ">Start quiz</button>
+            <button id="next-btn" class="next-btn btn hide">Volgende</button>
         </div>
+
+        <div id="progress">
+            <div class="prog"></div>
+        </div>
+    </div>
+    <div id="scoreContainer" class="hide">
+    </div>
 
     </div>
-    <script src="script.js"></script>
+
 </body>
 
 </html>
