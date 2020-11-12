@@ -55,12 +55,13 @@ const BuddylistItem4 = document.getElementById("BuddyListItem4");
 
 const buddy = document.getElementById("buddy");
 
-const gebruiker = document.getElementById("gebruiker");
+const gebruikerElement = document.getElementById("gebruiker");
+const checkListElement = document.getElementById("checklist-items");
 
 const elementsList = document.querySelectorAll("#ListItem1, #ListItem2, #ListItem3, #ListItem4");
 const elementsArray = [...elementsList];
 
-let gebruikerChecklists = [{
+/*let gebruikerChecklists = [{
     gebruiker, buddy: "Kok",
     listItem1, BuddylistItem1: "Gas uit",
     listItem2, BuddylistItem2: "Afzuigkap uit",
@@ -89,41 +90,71 @@ let gebruikerChecklists = [{
         listItem4, BuddylistItem4: "Vloer boenen",
     }
 ];
+ */
 
+const gebruikerChecklists = [{
+    gebruiker: 'Kok',
+    listItems: [
+        { text: 'Gas uit'},
+        { text: 'Afzuigkap uit'},
+        { text: 'Afzuigkap schoonmaken'},
+        { text: 'Vloer boenen'}
+    ]
+}, {
+    gebruiker: 'Afwasser',
+    listItems: [
+        { text: 'Spoelmachine uit'},
+        { text: 'Stroomschakelaar uit'},
+        { text: 'Rookmelder checken'},
+        { text: 'Vloer boenen'}
+    ]
+}, {
+    gebruiker: 'Bediende',
+    listItems: [
+        { text: 'Gasten de zaak uit'},
+        { text: 'Stopcontacten check'},
+        { text: 'Stofzuigen in hoekjes'},
+        { text: 'Vloer boenen'}
+    ]
+}, {
+    gebruiker: 'Barman',
+    listItems: [
+        { text: 'Kassa uit'},
+        { text: 'Vluchtroute checken'},
+        { text: 'Sloten checken'},
+        { text: 'Vloer boenen'}
+    ]
+}]
 
 let gebruikerNummer= -1;
 
-let buddyNummer= -1;
+//let buddyNummer= -1;
 
 
 function volgendeGebruiker() {
-    if (gebruikerNummer && buddyNummer >= 3){
+    if (gebruikerNummer >= 3){
 
     } else {
         gebruikerNummer++;
-        buddyNummer ++;
-        renderChecklist()
+        renderChecklist(gebruiker)
     }
 
 }
 
 function vorigeGebruiker() {
-    if (gebruikerNummer && buddyNummer <= 0) {
+    if (gebruikerNummer<= 0) {
 
     } else {
         --gebruikerNummer;
-        --buddyNummer;
         renderChecklist();
     }
 
 
 }
 
-function renderChecklist() {
+/*function renderChecklist() {
 
     let q = gebruikerChecklists[gebruikerNummer];
-
-    let w = gebruikerChecklists[buddyNummer];
 
 
     gebruiker.innerHTML = "<p>" + q.gebruiker + "</p>";
@@ -132,15 +163,25 @@ function renderChecklist() {
     listItem3.innerHTML = q.listItem3;
     listItem4.innerHTML = q.listItem4;
 
-    buddy.innerHTML = "<p>" + w.buddy + "</p>";
-    BuddylistItem1.innerHTML = w.BuddylistItem1;
-    BuddylistItem2.innerHTML = w.BuddylistItem2;
-    BuddylistItem3.innerHTML = w.BuddylistItem3;
-    BuddylistItem4.innerHTML = w.BuddylistItem4;
-
 }
 
+*/
 
+function renderChecklist(gebruiker) {
+
+    let gebruikerItem = gebruikerChecklists.gebruiker;
+    let listItems = gebruikerChecklists.listItems;
+    //gebruiker weergeven
+    gebruikerElement.innerText = gebruiker;
+
+    //antwoorden weergeven, loop en maak button met antwoord
+    gebruiker.listItems.forEach(listItems => {
+        const label = document.createElement('label');
+        label.innerText = listItems.text;
+        label.classList.add('checkbox');
+    })
+
+}
 function checkboxCheck(){
     let inputElems = document.getElementsByTagName("input"),
         count = 0;
