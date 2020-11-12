@@ -6,8 +6,18 @@ const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
 const progress = document.getElementById('progress');
 const scoreContainer = document.getElementById('scoreContainer');
+const vragenOverzicht = document.getElementById('vragen-overzicht');
+const vraag1 = document.getElementById('vraag1-btn')
+const vraag2 = document.getElementById('vraag2-btn')
+const vraag3 = document.getElementById('vraag3-btn')
+const vraag4 = document.getElementById('vraag4-btn')
+const containerOverzicht = document.getElementById('container-overzicht')
+const randomNumber = document.getElementById('randomNumber');
 
-let shuffledQuestions, runningQuestion
+
+const scoreText = document.getElementById('score');
+
+//let shuffledQuestions, runningQuestion
 
 
 //de vragen en antwoorden - array
@@ -46,25 +56,66 @@ const questions = [{
 
 
 //knoppen begin en volgende
-start.addEventListener('click', startQuiz)
+//start.addEventListener('click', startQuiz)
+vraag1.addEventListener('click', startQuiz)
+vraag2.addEventListener('click', startQuiz2)
+vraag3.addEventListener('click', startQuiz3)
+vraag4.addEventListener('click', startQuiz4)
 next.addEventListener('click', () => {
     runningQuestion++
     renderQuestion();
 })
 
+
 function startQuiz() {
     start.classList.add('hide')
-    shuffledQuestions = questions.sort(() => Math.random() - .5)
+
+    containerOverzicht.classList.add('hide')
+        //shuffledQuestions = questions.sort(() => Math.random() - .5)
     runningQuestion = 0
     quiz.classList.remove('hide')
     renderQuestion();
     //renderProgress();
 }
 
+function startQuiz2() {
+    start.classList.add('hide')
+
+    containerOverzicht.classList.add('hide')
+        //shuffledQuestions = questions.sort(() => Math.random() - .5)
+    runningQuestion = 1
+    quiz.classList.remove('hide')
+    renderQuestion();
+    //renderProgress();
+}
+
+function startQuiz3() {
+    start.classList.add('hide')
+
+    containerOverzicht.classList.add('hide')
+        //shuffledQuestions = questions.sort(() => Math.random() - .5)
+    runningQuestion = 2
+    quiz.classList.remove('hide')
+    renderQuestion();
+    //renderProgress();
+}
+
+function startQuiz4() {
+    start.classList.add('hide')
+
+    containerOverzicht.classList.add('hide')
+        //shuffledQuestions = questions.sort(() => Math.random() - .5)
+    runningQuestion = 3
+    quiz.classList.remove('hide')
+    renderQuestion();
+    //renderProgress();
+}
+
+
 // shuffle vragen
 function renderQuestion() {
     resetState();
-    showQuestion(shuffledQuestions[runningQuestion])
+    showQuestion(questions[runningQuestion])
 
 }
 
@@ -72,7 +123,8 @@ function renderQuestion() {
 function showQuestion(question) {
 
     //vraag weergeven
-    questionElement.innerText = question.question
+    questionElement.innerText = question.question;
+
 
     //antwoorden weergeven, loop en maak button met antwoord
     question.answers.forEach(answer => {
@@ -84,7 +136,7 @@ function showQuestion(question) {
         }
         button.addEventListener('click', selectAnswer)
         answerButtonsElement.appendChild(button)
-    })
+    });
 
 }
 
@@ -99,6 +151,7 @@ function resetState() {
     }
 }
 
+const lastQuestion = questions.length - 1;
 
 // na beantwoorden vraag laat volgende knop zien
 function selectAnswer(e) {
@@ -109,16 +162,58 @@ function selectAnswer(e) {
         setStatusClass(button, button.dataset.correct)
     })
 
-    if (shuffledQuestions.length > runningQuestion - 1) {
-
-        next.classList.remove('hide')
+    if (lastQuestion.length > runningQuestion - 1) {
+        runningQuestion++;
+        renderQuestion();
 
     } else {
-        start.innerText = 'Restart'
+        next.innerText = 'Volgende'
+        start.innerText = 'Overzicht'
         start.classList.remove('hide')
+        next.classList.remove('hide')
 
     }
 }
+
+
+function getNumber() {
+
+    var minNumber = 0;
+    var maxNumber = 4;
+    var randomnumber = Math.floor(Math.random() * (maxNumber + 1) + minNumber);
+    console.log(randomnumber);
+}
+
+
+
+/*
+let score = 0;
+//variabelen
+scoreRender();
+
+//score berekenen
+function scoreRender() {
+
+
+    //bereken percentage goede antwoorden. questions.length is aantal vragen
+    let scorepercent = Math.round(100 * score / questions.length)
+
+    //laat score percentage zien 
+    scoreContainer.innerText += "<p>" + scorepercent + "%</p>"
+
+
+}
+
+
+*/
+
+
+
+
+
+
+
+
 
 //geef kleur voor goed en fout
 function setStatusClass(element, correct) {
@@ -141,6 +236,33 @@ function clearStatusClass(element) {
     element.classList.remove('wrong')
 
 }
+
+
+
+/*
+if (answer == questions[runningQuestion].correct) {
+    //goed antwoord
+    score++;
+
+    //progress kleur groen
+    answerIsCorrect();
+} else {
+    // fout antwoord
+    // progress kleur rood
+    answerIsWrong();
+}
+if (runningQuestion < lastQuestion) {
+
+    runningQuestion++;
+    renderQuestion();
+} else {
+    //quiz einde en score laten zien
+
+    scoreRender();
+}
+
+*/
+
 
 /*
 let score = 0;

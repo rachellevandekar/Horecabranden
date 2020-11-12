@@ -1,14 +1,5 @@
 #question {
-    display: flex;
-    justify-content: center;
     width: 100vw;
-    right: 0;
-    top: 0;
-}
-
-.btn {
-    border-radius: 5px;
-    padding: 5px 10px;
 }
 
 
@@ -78,23 +69,41 @@ body {
 }
 
 .container {
-    max-width: 80%;
+    max-width: 50%;
 }
 
-.btn-flex {
+.circle {
+    height: 150px;
+    width: 150px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.collega {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
-    margin: 20px 0;
+}
+
+.vraag-btn {
+    outline: none;
+    width: 100%;
+    padding: 10px;
 }
 
 .btn {
-    border-radius: 5px;
-    padding: 5px 10px;
+    padding: 5px 5px;
     outline: none;
     width: 80%;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
 }
 
 .btn:hover {
