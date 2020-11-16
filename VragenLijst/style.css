@@ -23,7 +23,8 @@
     margin-right: 5px;
 }*/
 
-#scoreContainer {
+
+/*#scoreContainer {
     margin: 20px auto;
     background-color: white;
     opacity: 0.8;
@@ -45,7 +46,7 @@
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
-}
+}*/
 
 .hide {
     display: none;
@@ -130,4 +131,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.hud-prefix {
+    text-align: center;
+}
+
+.hud-main-text {
+    text-align: center;
 }
