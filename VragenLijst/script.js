@@ -13,8 +13,9 @@ const vraag3 = document.getElementById('vraag3-btn')
 const vraag4 = document.getElementById('vraag4-btn')
 const containerOverzicht = document.getElementById('container-overzicht')
 const randomNumber = document.getElementById('randomNumber');
+const winnaar = document.getElementById('winnaar');
 
-const scoreText = document.getElementById('score');
+const scoreText = document.querySelector(".score");
 
 let score = 0;
 let questionCounter = 0;
@@ -70,7 +71,11 @@ next.addEventListener('click', () => {
 
 })
 start.addEventListener('click', () => {
-    return window.location.assign("index.html");
+    containerOverzicht.classList.remove('hide')
+    quiz.classList.add('hide')
+    start.classList.add('hide')
+    next.classList.add('hide')
+
 
 })
 
@@ -118,7 +123,6 @@ function startQuiz4() {
 
 // vraag laden
 function renderQuestion() {
-
 
     resetState();
     showQuestion(questions[runningQuestion])
@@ -193,8 +197,22 @@ function selectAnswer(e) {
 
     }
 
-    setScore(correct);
 
+
+    if (correct) {
+
+        incrementScore(CORRECT_BONUS);
+        console.log(score);
+        scoreText.innerText = score;
+
+    }
+
+    if (score > 3) {
+        console.log("gewonnen")
+        winnaar.classList.remove('hide')
+        winnaar.innerText = "je hebt gewonnen";
+
+    }
 
 };
 
@@ -219,18 +237,6 @@ function setStatusClass(element, correct) {
 }
 
 
-function setScore(correct) {
-
-
-    if (correct) {
-
-        incrementScore(CORRECT_BONUS);
-        console.log(score);
-        scoreText.innerText = score;
-
-    }
-
-}
 
 incrementScore = num => {
     score += num;
