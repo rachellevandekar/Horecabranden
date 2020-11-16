@@ -39,7 +39,7 @@ function checkboxCheck() {
 
 document.querySelector(".submit").addEventListener("click", checkboxNames);
 
-document.querySelector(".volgende-gebruiker").addEventListener("click", volgendeGebruiker);
+document.querySelector(".volgende-gebruiker").addEventListener("click", volgendeGebruiker, test);
 
 document.querySelector(".vorige-gebruiker").addEventListener("click", vorigeGebruiker);
 
@@ -57,9 +57,15 @@ const buddy = document.getElementById("buddy");
 
 const gebruikerElement = document.getElementById("gebruiker");
 const checkListElement = document.getElementById("checklist-items");
+const buddyElement = document.getElementById("buddy");
+const buddyCheckListElement = document.getElementById("buddy-checklist");
 
-const elementsList = document.querySelectorAll("#ListItem1, #ListItem2, #ListItem3, #ListItem4");
+const elementsList = document.querySelectorAll( ".list-item");
 const elementsArray = [...elementsList];
+
+function test(){
+    console.log(elementsArray);
+}
 
 /*let gebruikerChecklists = [{
     gebruiker, buddy: "Kok",
@@ -178,20 +184,36 @@ function renderChecklist() {
     gebruikerElement.innerText = gebruiker;
 
      */
-    let q = gebruikerChecklists[gebruikerNummer];
+    let user = gebruikerChecklists[gebruikerNummer];
     //gebruiker weergeven
-    gebruikerElement.innerText = q.gebruiker;
+    gebruikerElement.innerText = user.gebruiker;
+
+    let randomBuddyNumber = Math.floor(Math.random() * gebruikerChecklists.length) -1;
+    if(randomBuddyNumber <0){
+        randomBuddyNumber = 0;
+    }
+    let buddy = gebruikerChecklists.filter(gebruiker => gebruiker !== user)[randomBuddyNumber];
+
+    buddyElement.innerText = buddy.gebruiker;
 
 
-    let innerHTML = "";
-    q.listItems.forEach(listItem => {
-            innerHTML += `<input type="checkbox" class="list-item">
-            <label>${listItem.text}</label><br>`
-    });
-    checkListElement.innerHTML = innerHTML;
+
+    checkListElement.innerHTML = renderHTMLChecklist(user);
+    buddyCheckListElement.innerHTML = renderHTMLChecklist(buddy);
 
 
 }
+
+function renderHTMLChecklist(user) {
+    let innerHTML = "";
+    user.listItems.forEach((listItem, index) => {
+        innerHTML += `<input type="checkbox" class="list-item" id=listItemID-${index}><label for=listItemID-${index}>${listItem.text}</label><br>`;
+    });
+    return innerHTML;
+}
+
+//console.log(gebruikerChecklists.find(x => x.id === '4').text);
+
 function checkboxCheck(){
     let inputElems = document.getElementsByTagName("input"),
         count = 0;
@@ -199,7 +221,7 @@ function checkboxCheck(){
         if (inputElems[i].type === "checkbox" && inputElems[i].checked === true){
             count++;
             alert(document.querySelectorAll('input[type="checkbox"]:checked').length);
-            alert(document.getElementById())
+            alert(document.getElementById());
         }
     }}
 
@@ -216,5 +238,30 @@ function checkboxCheck(){
 
         }
 
+}
+
+
+function checkboxNames3() {
+    let checkbox = document.querySelector('input[type ="checkbox"]:checked'),
+        count = 0;
+    for (let i = 0; i < inputElems.length; i++) {
+        if (checkbox[i].type === "checkbox" && checkbox[i].checked === false) {
+            count++;
+
+            console.log(elementsArray[i]);
+
+        }
+
     }
+
+}
+
+
+let result = document.querySelector('h1');
+function checkboxNames2() {
+    let checkbox = document.querySelector('input[type ="checkbox"]:checked');
+
+    result.innerText = checkbox.parentNode.textContent;
+
+}
 
