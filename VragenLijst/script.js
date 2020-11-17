@@ -7,19 +7,22 @@ const answerButtonsElement = document.getElementById('answer-buttons');
 //const progress = document.getElementById('progress');
 const scoreContainer = document.getElementById('scoreContainer');
 const vragenOverzicht = document.getElementById('vragen-overzicht');
-const vraag1 = document.getElementById('vraag1-btn')
-const vraag2 = document.getElementById('vraag2-btn')
-const vraag3 = document.getElementById('vraag3-btn')
-const vraag4 = document.getElementById('vraag4-btn')
+const vragen = document.querySelector(".vraag-btn")
 const containerOverzicht = document.getElementById('container-overzicht')
 const randomNumber = document.getElementById('randomNumber');
 const winnaar = document.getElementById('winnaar');
+
+
+
+//const finalScore = document.getElementById('finalScore');
 
 const scoreText = document.querySelector(".score");
 
 let score = 0;
 let questionCounter = 0;
 
+
+const MAX_QUESTIONS = 4;
 const CORRECT_BONUS = 1;
 
 
@@ -60,16 +63,15 @@ const questions = [{
 
 //knoppen begin en volgende
 //start.addEventListener('click', startQuiz)
-vraag1.addEventListener('click', startQuiz)
-vraag2.addEventListener('click', startQuiz2)
-vraag3.addEventListener('click', startQuiz3)
-vraag4.addEventListener('click', startQuiz4)
+//finalScore.innerText = mostRecentScore;
+vragen.addEventListener('click', startQuiz)
 next.addEventListener('click', () => {
 
     runningQuestion++
     renderQuestion();
 
 })
+
 start.addEventListener('click', () => {
     containerOverzicht.classList.remove('hide')
     quiz.classList.add('hide')
@@ -81,6 +83,7 @@ start.addEventListener('click', () => {
 
 function startQuiz() {
     questionCounter = 0;
+    availableQuestions = [...questions];
     score = 0;
     start.classList.add('hide')
     containerOverzicht.classList.add('hide')
@@ -91,48 +94,37 @@ function startQuiz() {
 
 }
 
-function startQuiz2() {
-    start.classList.add('hide')
-    score = 0;
-    containerOverzicht.classList.add('hide')
-    runningQuestion = 1;
-    quiz.classList.remove('hide')
-    renderQuestion();
-
-}
-
-function startQuiz3() {
-    start.classList.add('hide')
-    score = 0;
-    containerOverzicht.classList.add('hide')
-    runningQuestion = 2
-    quiz.classList.remove('hide')
-    renderQuestion();
-}
-
-function startQuiz4() {
-    start.classList.add('hide')
-    score = 0;
-    containerOverzicht.classList.add('hide')
-    runningQuestion = 3
-    quiz.classList.remove('hide')
-    renderQuestion();
-}
-
 
 
 // vraag laden
 function renderQuestion() {
 
+    /* if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+
+        localStorage.setItem('mostRecentScore', score);
+
+        return window.location.assign("/end.html");
+    }
+*/
+
     resetState();
     showQuestion(questions[runningQuestion])
+
+
+    /* if (runningQuestion < lastQuestion) {
+
+         localStorage.setItem('mostRecentScore', score);
+
+         return window.location.assign('end.html');
+
+
+     };*/
 
 }
 
 
 //vraag en antwoorden weergeven 
 function showQuestion(question) {
-
 
 
     //vraag weergeven
@@ -151,6 +143,9 @@ function showQuestion(question) {
         answerButtonsElement.appendChild(button)
     });
 
+
+
+
 }
 
 //alles terug naar default bij elke nieuwe vraag, 1 vraag weergeven
@@ -167,7 +162,10 @@ function resetState() {
     while (questionElement.firstChild) {
         questionElement.removeChild(questionElement.firstChild)
 
+
     }
+
+
 
 
 }
@@ -194,7 +192,6 @@ function selectAnswer(e) {
         start.innerText = 'Overzicht'
         start.classList.remove('hide')
         next.classList.remove('hide')
-
     }
 
 
@@ -204,6 +201,7 @@ function selectAnswer(e) {
         incrementScore(CORRECT_BONUS);
         console.log(score);
         scoreText.innerText = score;
+        localStorage.setItem('mostRecentScore', score);
 
     }
 
@@ -213,6 +211,7 @@ function selectAnswer(e) {
         winnaar.innerText = "je hebt gewonnen";
 
     }
+
 
 };
 
@@ -254,109 +253,6 @@ function clearStatusClass(element) {
 }
 
 
-/*
-incrementScore = num => {
-    score += num
-    scoreText.innerText = score
-}
-*/
-/*
-function getNumber() {
-
-    var minNumber = 0;
-    var maxNumber = 4;
-    var randomnumber = Math.floor(Math.random() * (maxNumber + 1) + minNumber);
-    console.log(randomnumber);
-}
-
-
-*/
-
-
-/*
-
-if (answer == questions[runningQuestion].correct) {
-    //goed antwoord
-    score++;
-
-    //progress kleur groen
-
-} else {
-    // fout antwoord
-    // progress kleur rood
-    answerIsWrong();
-}
-if (runningQuestion < lastQuestion) {
-
-    runningQuestion++;
-    renderQuestion();
-} else {
-    //quiz einde en score laten zien
-
-    scoreRender();
-}
-
-*/
-
-
-/*
-let score = 0;
-//variabelen
-//const lastQuestion = questions.length - 1;
-
-//score berekenen
-function scoreRender() {
-    scoreContainer.classList.remove('hide')
-
-    //bereken percentage goede antwoorden. questions.length is aantal vragen
-    let scorepercent = Math.round(100 * score / questions.length)
-
-    //laat score percentage zien 
-    scoreContainer.innerHTML += "<p>" + scorepercent + "%</p>"
-
-
-}
-*/
-
-/*
-//progressie renderen 
-function renderProgress() {
-    for (let qIndex = 0; qIndex <= lastQuestion; qIndex++) {
-        progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>";
-    }
-}
-
-
-function checkAnswer(answer) {
-    if (answer == questions[runningQuestion].correct) {
-        //goed antwoord
-        score++;
-
-        //progress kleur groen
-        answerIsCorrect();
-    } else {
-        // fout antwoord
-        // progress kleur rood
-        answerIsWrong();
-    }
-    if (runningQuestion < lastQuestion) {
-
-        runningQuestion++;
-        renderQuestion();
-    } else {
-        //quiz einde en score laten zien
-
-        scoreRender();
-    }
-}
-
-
-//goed antwoord, kleur groen progress
-function answerIsCorrect() {
-    document.getElementById(runningQuestion).style.backgroundColor = "#070"
-}
-
-//fout antwoord, kleur rood progress
-function answerIsWrong() {
-    document.getElementById(runningQuestion).style.backgroundColor = "#f00"
-}*/
+const finalScore = document.getElementById('finalScore');
+const mostRecentScore = localStorage.getItem('mostRecentScore');
+finalScore.innerText = mostRecentScore + " vs 3";
