@@ -8,9 +8,6 @@ let thingsRef;
 let unsubscribe;
 
 
-
-
-
 // Database Reference
 thingsRef = db.collection("Gebruikers").doc("voorbeeldgebruiker");
 
@@ -74,7 +71,7 @@ unsubscribe = thingsRef
 
         const items = querySnapshot.docs.map(doc => {
 
-            return `<li>${doc.data().}</li>`
+            return `<li>${doc.data().createdAt}</li>`
 
         });
 
