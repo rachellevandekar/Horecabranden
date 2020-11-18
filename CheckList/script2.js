@@ -39,7 +39,7 @@ function checkboxCheck() {
 
 document.querySelector(".submit").addEventListener("click", checkboxNames);
 
-document.querySelector(".volgende-gebruiker").addEventListener("click", volgendeGebruiker);
+document.querySelector(".volgende-gebruiker").addEventListener("click", volgendeGebruiker, test);
 
 document.querySelector(".vorige-gebruiker").addEventListener("click", vorigeGebruiker);
 
@@ -63,6 +63,9 @@ const buddyCheckListElement = document.getElementById("buddy-checklist");
 const elementsList = document.querySelectorAll( ".list-item");
 const elementsArray = [...elementsList];
 
+function test(){
+    console.log(elementsArray);
+}
 
 /*let gebruikerChecklists = [{
     gebruiker, buddy: "Kok",
@@ -169,7 +172,9 @@ function vorigeGebruiker() {
 }
 
 */
-
+function stringify (x) {
+    console.log(Object.prototype.toString.call(x));
+}
 function renderChecklist() {
 
     let counter = 0;
@@ -207,7 +212,7 @@ function renderHTMLChecklist(user) {
     return innerHTML;
 }
 
-
+//console.log(gebruikerChecklists.find(x => x.id === '4').text);
 
 function checkboxCheck(){
     let inputElems = document.getElementsByTagName("input"),
@@ -221,9 +226,11 @@ function checkboxCheck(){
     }}
 
 function checkboxNames() {
-    let inputElems = document.getElementsByTagName("input[type=checkbox]"),
+    let inputElems = document.getElementsByTagName('input');
         count = 0;
-    for (let i = 0; i < inputElems.length; i++) {
+    console.log(inputElems.length);
+    for (let i = 0; i < inputElems.length; i++)
+    {
         if (inputElems[i].checked === false) {
             count++;
             //
@@ -262,5 +269,4 @@ function checkboxNames2() {
     result.innerText = checkbox.parentNode.textContent;
 
 }
-
 
