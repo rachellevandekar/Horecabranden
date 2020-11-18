@@ -78,3 +78,9 @@ unsubscribe = thingsRef
         thingsList.innerHTML = items.join('');
 
     });
+
+db.collection('Gebruikers').get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+        console.log(doc.data())
+    })
+})
