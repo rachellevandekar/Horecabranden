@@ -8,39 +8,50 @@ let thingsRef;
 let unsubscribe;
 
 
-// Database Reference
+var getFunctie = function(functienaam) {
+        thingsRef = db.collection("functies").doc(functienaam);
+        thingsRef.get().then(function(doc) {
+            console.log(doc.data())
+            return doc.data();
+        })
+    }
+    // Database Reference
 thingsRef = db.collection("Gebruikers").doc("voorbeeldgebruiker");
-
 
 
 thingsRef.get().then(function(doc) {
     if (doc.exists) {
         console.log("Document data:", doc.data());
+        var gebruikerData = doc.data();
+        console.log(gebruikerData.functie)
 
+        var functie = getFunctie(gebruikerData.functie);
+        console.log(functie)
 
-        thingsList.innerHTML = items.join('');
+        document.getElementById('thingsList')
+            //thingsList.innerHTML = items.join('');
     } else {
-        // doc.data() will be undefined in this case
+
         console.log("No such document!");
     }
 }).catch(function(error) {
     console.log("Error getting document:", error);
+
+
 });
 
 
 
 thingsRef = db.collection("functies").doc("afwasser");
 
-
-
 thingsRef.get().then(function(doc) {
     if (doc.exists) {
         console.log("Document data:", doc.data());
         return `<li>${doc.data()}</li>`
 
-        thingsList.innerHTML = items.join('');
+        //thingsList.innerHTML = items.join('');
     } else {
-        // doc.data() will be undefined in this case
+
         console.log("No such document!");
     }
 }).catch(function(error) {
@@ -64,10 +75,10 @@ createThing.onclick = () => {
 // Query
 unsubscribe = thingsRef
 
-    .orderBy('createdAt') // Requires a query
+    .orderBy('createdAt')
     .onSnapshot(querySnapshot => {
 
-        // Map results to an array of li elements
+
 
         const items = querySnapshot.docs.map(doc => {
 
