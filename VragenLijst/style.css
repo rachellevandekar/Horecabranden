@@ -114,3 +114,11 @@ a {
     text-decoration: none;
     color: black;
 }
+
+#scoreBtns {
+    padding: 10px 20px;
+    outline: none;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}

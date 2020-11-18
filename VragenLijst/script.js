@@ -1,21 +1,18 @@
+console.log(firebase)
+
+
 //elementen selecteren 
 const start = document.getElementById('start-btn');
 const next = document.getElementById('next-btn');
 const quiz = document.getElementById('quiz');
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
-//const progress = document.getElementById('progress');
 const scoreContainer = document.getElementById('scoreContainer');
 const vragenOverzicht = document.getElementById('vragen-overzicht');
 const vragen = document.querySelector(".vraag-btn")
 const containerOverzicht = document.getElementById('container-overzicht')
 const randomNumber = document.getElementById('randomNumber');
 const winnaar = document.getElementById('winnaar');
-
-
-
-//const finalScore = document.getElementById('finalScore');
-
 const scoreText = document.querySelector(".score");
 
 let score = 0;
@@ -62,8 +59,6 @@ const questions = [{
 
 
 //knoppen begin en volgende
-//start.addEventListener('click', startQuiz)
-//finalScore.innerText = mostRecentScore;
 vragen.addEventListener('click', startQuiz)
 next.addEventListener('click', () => {
 
@@ -110,16 +105,6 @@ function renderQuestion() {
     resetState();
     showQuestion(questions[runningQuestion])
 
-
-    /* if (runningQuestion < lastQuestion) {
-
-         localStorage.setItem('mostRecentScore', score);
-
-         return window.location.assign('end.html');
-
-
-     };*/
-
 }
 
 
@@ -162,11 +147,7 @@ function resetState() {
     while (questionElement.firstChild) {
         questionElement.removeChild(questionElement.firstChild)
 
-
     }
-
-
-
 
 }
 
@@ -223,10 +204,7 @@ function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
 
-
         element.classList.add('correct')
-
-
 
     } else {
         element.classList.add('wrong')
