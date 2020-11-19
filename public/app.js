@@ -7,7 +7,7 @@ const thingsList = document.getElementById('thingsList');
 let thingsRef;
 let unsubscribe;
 
-/*
+
 var getFunctie = function(functienaam) {
         thingsRef = db.collection("functies").doc(functienaam);
         thingsRef.get().then(function(doc) {
@@ -15,18 +15,18 @@ var getFunctie = function(functienaam) {
             return doc.data();
         })
     }
-    // Database Reference*/
+    // Database Reference
 thingsRef = db.collection("Gebruikers").doc("voorbeeldgebruiker");
 
 
 thingsRef.get().then(function(doc) {
     if (doc.exists) {
         console.log("Document data:", doc.data());
-        /* var gebruikerData = doc.data();
-         console.log(gebruikerData.functie)
+        var gebruikerData = doc.data();
+        console.log(gebruikerData.functie)
 
-         var functie = getFunctie(gebruikerData.functie);
-         console.log(functie)*/
+        var functie = getFunctie(gebruikerData.functie);
+        console.log(functie)
 
         document.getElementById('thingsList')
             //thingsList.innerHTML = items.join('');
@@ -36,6 +36,7 @@ thingsRef.get().then(function(doc) {
     }
 }).catch(function(error) {
     console.log("Error getting document:", error);
+
 
 });
 
@@ -59,7 +60,6 @@ thingsRef.get().then(function(doc) {
 
 
 
-
 thingsRef = db.collection("Things");
 createThing.onclick = () => {
 
@@ -78,6 +78,8 @@ unsubscribe = thingsRef
     .orderBy('createdAt')
     .onSnapshot(querySnapshot => {
 
+
+
         const items = querySnapshot.docs.map(doc => {
 
             return `<li>${doc.data().createdAt}</li>`
@@ -93,17 +95,3 @@ db.collection('Gebruikers').get().then((snapshot) => {
         console.log(doc.data())
     })
 })
-
-
-var docRef = db.collection("vragen").doc("collecties");
-
-docRef.get().then(function(doc) {
-    if (doc.exists) {
-        console.log("Document data:", doc.data().brand.vraag1.vraag);
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-    }
-}).catch(function(error) {
-    console.log("Error getting document:", error);
-});

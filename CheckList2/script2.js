@@ -137,3 +137,131 @@ function checkboxNames() {
 }
 
 
+/*
+
+
+
+
+function voegToe(taak1, taak2, taak3, taak4) {
+
+    firebase.db().ref('functies/' + afwasser).set({
+        taak1: taak1,
+        taak2: taak2,
+        taak3: taak3,
+        taak4: taak4
+    });
+
+
+}
+
+
+function voegToe() {
+dbReferentie.on('value', function(snapshot){
+    taak1.val(snapshot.child('functies/afwasser/taak1').val());
+    taak2.val(snapshot.child('functies/afwasser/taak2').val());
+    taak3.val(snapshot.child('functies/afwasser/taak3').val());
+    taak4.val(snapshot.child('functies/afwasser/taak4').val());
+})
+}
+
+var docRef = db.collection("vragen").doc("collecties");
+
+docRef.get().then(function(doc) {
+    if (doc.exists) {
+        taak1.val("Document data:", doc.data().brand.val());
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+ */
+
+
+//var dbReferentie = firebase.database().ref().child('functies');
+
+document.getElementById('voegToe').addEventListener("click", voegToe);
+
+const taak1 = document.getElementById('taak1');
+const taak2 = document.getElementById('taak2');
+const taak3 = document.getElementById('taak3');
+const taak4 = document.getElementById('taak4');
+const Taak = document.getElementById('geefTaakWeer');
+
+/*const db = firebase.firestore();
+vragenRef = db.collection("vragen");
+
+vragenRef
+    .onSnapshot(querySnapshot => {
+
+        const items = querySnapshot.docs.map(doc => {
+
+            return `<p>${doc.data().brand.vraag1.vraag}</p><p>${doc.data().brand.vraag1.a}</p>`
+
+
+        });
+
+        Taak.innerHTML = items.join('');
+
+    });
+
+
+ */
+
+
+/*const db = firebase.firestore();
+vragenRef = db.collection("functies").doc('barman');
+functieRef.get().then((doc) => {
+   if(!doc.exists) return;
+   console.log(doc.data());
+
+});
+
+ */
+
+/*db.collection('functies').doc('barman').get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+        console.log(doc.data().taak1)
+    })
+})
+
+ */
+
+const db = firebase.firestore()
+var docRef = db.collection("functies").doc("barman");
+
+
+
+docRef.get().then(function(docs) {
+    if (docs.exists) {
+        console.log("Document data:", docs.data().taak1);
+        return `<p>${docs.data()}</p>`;
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+
+
+/*
+vragenRef
+    .onSnapshot(querySnapshot => {
+
+        const items = querySnapshot.docs.map(doc => {
+
+            return `<p>${doc.data().taak1}</p><p>${doc.data().taak2}</p>`
+
+
+
+        });
+
+        Taak.innerHTML = items.join('');
+        console.log(items);
+    });
+
+
+
+ */
