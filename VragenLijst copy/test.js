@@ -1,8 +1,35 @@
 const db = firebase.firestore();
+//var funcCol = db.collection("functies");
+var vragCol = db.collection("vragen");
 
-var docRef = db.collection("vragen").doc("collecties");
-//const thingsList = document.getElementById("thingsList");
-document.getElementById("insert").addEventListener("click", selectFunction);
+document.getElementById("insert").addEventListener("click", selectVraag);
+/*
+function ready() {
+
+    gebr = document.getElementById('gebruiker');
+    taak1 = document.getElementById('taak1');
+    taak2 = document.getElementById('taak2');
+    taak3 = document.getElementById('taak3');
+    taak4 = document.getElementById('taak4');
+}*/
+funct = document.getElementById('functie');
+
+
+function selectVraag() {
+    //ready();
+    let functVar = funct.value;
+    vragCol.doc(vraag1).get().then(function(collecties) {
+        //document.getElementById('gebruiker').innerHTML = collecties.data().antwoord;
+        document.querySelector('question').innerText = collecties.data().vraag;
+        document.getElementById('antwoordA').innerHTML = collecties.data().a;
+        document.getElementById('antwoordB').innerHTML = collecties.data().b;
+        document.getElementById('antwoordC').innerHTML = collecties.data().c;
+        document.getElementById('antwoordD').innerHTML = collecties.data().d;
+    })
+}
+
+
+/*
 
 function selectFunction() {
 
@@ -16,7 +43,7 @@ function selectFunction() {
 
 }
 
-
+*/
 
 /*
 docRef.get().then(function(docs) {

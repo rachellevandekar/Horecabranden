@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Checklist</title>
-    <link rel="stylesheet" href="style.css">
+
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
@@ -37,20 +37,28 @@
 
 <body>
     <div>
-        <p id="vraag">vraag</p>
-        a.
-        <p id="antwoordA">antwoord1</p>
-        b.
-        <p id="antwoordB">antwoord2</p>
-        c.
-        <p id="antwoordC">antwoord3</p>
-        d.
-        <p id="antwoordD">antwoord4</p>
+        Functie <input id="functie" type="text"><br><br> Gebruiker
+        <p id="gebruiker">gebruiker</p><br><br> Taak
+        <p id="taak1">taak1</p><br><br> Taak
+        <p id="taak2">taak2</p><br><br> Taak
+        <p id="taak3">taak3</p><br><br> Taak
+        <p id="taak4">taak4</p><br><br>
+        <p id="taak5">taak5</p><br><br>
+        <br><br>
+
+        <button id="insert">insert</button>
+        <button id="select">select</button>
 
 
+        <div id="question"> Question </div>
 
-        <button id="insert">vraag laden</button>
 
+        <div id="answer-buttons" class="btn-grid">
+            <button id="antwoordA" class="btn" value="1">Answer 1</button>
+            <button id="antwoordB" class="btn" value="2">Answer 2</button>
+            <button id="antwoordC" class="btn" value="3">Answer 3</button>
+            <button id="antwoordD" class="btn" value="4">Answer 4</button>
+        </div>
 
 
     </div>

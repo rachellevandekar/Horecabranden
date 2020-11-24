@@ -4,59 +4,82 @@ const next = document.getElementById('next-btn');
 const quiz = document.getElementById('quiz');
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
-const scoreContainer = document.getElementById('scoreContainer');
+//const scoreContainer = document.getElementById('scoreContainer');
 const vragenOverzicht = document.getElementById('vragen-overzicht');
 const vragen = document.querySelector(".vraag-btn")
-const containerOverzicht = document.getElementById('container-overzicht')
-const randomNumber = document.getElementById('randomNumber');
-const winnaar = document.getElementById('winnaar');
-const scoreText = document.querySelector(".score");
+const containerOverzicht = document.getElementById('container-overzicht');
+//const randomNumber = document.getElementById('randomNumber');
+//const winnaar = document.getElementById('winnaar');
+//const scoreText = document.querySelector(".score");
 
-let score = 0;
-let questionCounter = 0;
-
-
-const MAX_QUESTIONS = 4;
-const CORRECT_BONUS = 1;
+//let score = 0;
+//let questionCounter = 0;
+let runningQuestion = -1;
 
 
-//de vragen en antwoorden - array
-const questions = [{
-    question: 'Wat moet je vooral NIET doen bij een vlam in de pan?',
-    answers: [
-        { text: 'deksel op de pan', correct: false },
-        { text: 'afzuigkap uitzetten', correct: false },
-        { text: 'water er overheen gooien', correct: true },
-        { text: 'gas uitzetten', correct: false }
-    ]
+//const MAX_QUESTIONS = 4;
+//const CORRECT_BONUS = 1;
+
+
+const db = firebase.firestore();
+var vragCol = db.collection("vragen");
+//document.getElementById("start-btn").addEventListener("click", renderQuestion);
+document.querySelector("#vraag1-btn").addEventListener("click", startQuiz);
+//funct = document.getElementById('question')
+
+
+const vragenDB = [{
+    vraag: vragCol.doc("vraag1")
 }, {
-    question: 'Waar ontstaat brand het meest?',
-    answers: [
-        { text: 'pan', correct: false },
-        { text: 'afzuiging', correct: true },
-        { text: 'oven', correct: false },
-        { text: 'meterkast', correct: false }
-    ]
+    vraag: vragCol.doc("vraag2")
 }, {
-    question: 'Wat moet je NIET doen bij brand?',
-    answers: [
-        { text: 'wegrennen', correct: true },
-        { text: 'rustig blijven', correct: false },
-        { text: 'brandweer bellen', correct: false },
-        { text: 'veilig naar buiten', correct: false }
-    ]
+    vraag: vragCol.doc("vraag3")
 }, {
-    question: 'Is een schone werkomgeving belangrijk?',
-    answers: [
-        { text: 'ja', correct: true },
-        { text: 'nee', correct: false },
-    ]
-}]
+    vraag: vragCol.doc("vraag4")
+}];
 
-
-
-//knoppen begin en volgende
 vragen.addEventListener('click', startQuiz)
+
+
+function startQuiz() {
+    //questionCounter = 0;
+    //availableQuestions = [...questions];
+    //score = 0;
+    //start.classList.add('hide')
+    containerOverzicht.classList.add('hide')
+        //runningQuestion = -1;
+    quiz.classList.remove('hide')
+
+    renderQuestion();
+
+    next.innerText = 'Volgende'
+    start.innerText = 'Overzicht'
+    start.classList.remove('hide')
+    next.classList.remove('hide')
+
+}
+
+
+//console.log(vragen)
+
+// vraag laden
+function renderQuestion() {
+
+    //showQuestion(questions[runningQuestion])
+
+    //let functVar = funct.value;
+
+    vragCol.doc("vraag1").get().then(function(snapshot) {
+        document.getElementById('question').innerHTML = snapshot.data().vraag;
+        document.getElementById('antwoordA').innerHTML = snapshot.data().a;
+        document.getElementById('antwoordB').innerHTML = snapshot.data().b;
+        document.getElementById('antwoordC').innerHTML = snapshot.data().c;
+        document.getElementById('antwoordD').innerHTML = snapshot.data().d;
+
+    })
+
+}
+
 next.addEventListener('click', () => {
 
     runningQuestion++
@@ -64,47 +87,31 @@ next.addEventListener('click', () => {
 
 })
 
-start.addEventListener('click', () => {
-    containerOverzicht.classList.remove('hide')
-    quiz.classList.add('hide')
-    start.classList.add('hide')
-    next.classList.add('hide')
 
+/*
+//knoppen begin en volgende
+//vragen.addEventListener('click', startQuiz)
+next.addEventListener('click', () => {
+
+    runningQuestion++
+    renderQuestion();
 
 })
 
-function startQuiz() {
-    questionCounter = 0;
-    availableQuestions = [...questions];
-    score = 0;
-    start.classList.add('hide')
-    containerOverzicht.classList.add('hide')
-    runningQuestion = 0
-    quiz.classList.remove('hide')
-    renderQuestion();
-
-
-}
-
-
-
-// vraag laden
-function renderQuestion() {
-
-    /* if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
-
-        localStorage.setItem('mostRecentScore', score);
-
-        return window.location.assign("/end.html");
-    }
 */
+/*
+start.addEventListener('click', () => {
+    // containerOverzicht.classList.remove('hide')
+    //quiz.classList.add('hide')
+    //  start.classList.add('hide')
+    //next.classList.add('hide')
+    startQuiz();
 
-    resetState();
-    showQuestion(questions[runningQuestion])
-
-}
+})*/
 
 
+
+/*
 //vraag en antwoorden weergeven 
 function showQuestion(question) {
 
@@ -128,8 +135,8 @@ function showQuestion(question) {
 
 
 
-}
-
+}*/
+/*
 //alles terug naar default bij elke nieuwe vraag, 1 vraag weergeven
 function resetState() {
     clearStatusClass(document.body)
@@ -147,9 +154,9 @@ function resetState() {
     }
 
 }
-
-const lastQuestion = questions.length - 1;
-
+*/
+//const lastQuestion = questions.length - 1;
+/*
 // na beantwoorden vraag laat volgende knop zien
 function selectAnswer(e) {
     const selectedButton = e.target
@@ -230,4 +237,42 @@ function clearStatusClass(element) {
 
 const finalScore = document.getElementById('finalScore');
 const mostRecentScore = localStorage.getItem('mostRecentScore');
-finalScore.innerText = mostRecentScore + " vs 3";
+finalScore.innerText = mostRecentScore + " vs 3";*/
+
+
+
+
+/*
+//de vragen en antwoorden - array
+const questions = [{
+    question: 'Wat moet je vooral NIET doen bij een vlam in de pan?',
+    answers: [
+        { text: 'deksel op de pan', correct: false },
+        { text: 'afzuigkap uitzetten', correct: false },
+        { text: 'water er overheen gooien', correct: true },
+        { text: 'gas uitzetten', correct: false }
+    ]
+}, {
+    question: 'Waar ontstaat brand het meest?',
+    answers: [
+        { text: 'pan', correct: false },
+        { text: 'afzuiging', correct: true },
+        { text: 'oven', correct: false },
+        { text: 'meterkast', correct: false }
+    ]
+}, {
+    question: 'Wat moet je NIET doen bij brand?',
+    answers: [
+        { text: 'wegrennen', correct: true },
+        { text: 'rustig blijven', correct: false },
+        { text: 'brandweer bellen', correct: false },
+        { text: 'veilig naar buiten', correct: false }
+    ]
+}, {
+    question: 'Is een schone werkomgeving belangrijk?',
+    answers: [
+        { text: 'ja', correct: true },
+        { text: 'nee', correct: false },
+    ]
+}]
+*/
