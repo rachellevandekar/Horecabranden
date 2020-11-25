@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Checklist</title>
@@ -30,15 +30,34 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
+
+
+
     </script>
 </head>
 <body>
 Functie <input id="functie" type="text"><br><br>
 Gebruiker <p id="gebruiker">gebruiker</p><br><br>
-Taak <p id="taak1">taak1</p><br><br>
-Taak <p id="taak2">taak2</p><br><br>
-Taak <p id="taak3">taak3</p><br><br>
-Taak <p id="taak4">taak4</p><br><br>
+
+
+
+<input type="checkbox" id="taak1"><label for=taak1>taak1</label><br>
+<input type="checkbox" id="taak2"><label for=taak2>taak1</label><br>
+<input type="checkbox" id="taak3"><label for=taak3>taak1</label><br>
+<input type="checkbox" id="taak4"><label for=taak4>taak1</label><br>
+
+<!--
+
+Taak <li id="taak2">taak2</li><br><br>
+Taak <li id="taak3">taak3</li><br><br>
+Taak <li id="taak4">taak4</li><br><br>
+
+-->
+
+<ul id="takenlijst">
+
+</ul>
+
 <br><br>
 
 <button id="insert">insert</button>
@@ -54,5 +73,6 @@ Taak <p id="taak4">taak4</p><br><br>
 <p id="geefTaakWeer">taak</p>
 
 <script rel="script" src="test.js"></script>
+
 
 </html>

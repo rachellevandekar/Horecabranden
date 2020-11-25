@@ -14,7 +14,7 @@ var getFunctie = function(functienaam) {
             console.log(doc.data())
             return doc.data();
         })
-    }
+    };
     // Database Reference
 thingsRef = db.collection("Gebruikers").doc("voorbeeldgebruiker");
 
@@ -69,7 +69,7 @@ createThing.onclick = () => {
 
         createdAt: serverTimestamp()
     });
-}
+};
 
 
 // Query
