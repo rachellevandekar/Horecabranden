@@ -14,19 +14,22 @@ const containerOverzicht = document.getElementById('container-overzicht');
 
 //let score = 0;
 //let questionCounter = 0;
-let runningQuestion = -1;
-
 
 //const MAX_QUESTIONS = 4;
 //const CORRECT_BONUS = 1;
 
-
-const db = firebase.firestore();
-var vragCol = db.collection("vragen");
 //document.getElementById("start-btn").addEventListener("click", renderQuestion);
-document.querySelector("#vraag1-btn").addEventListener("click", startQuiz);
 //funct = document.getElementById('question')
 
+const db = firebase.firestore();
+var vragCol = db.collection('vragen');
+document.querySelector("#vraag1-btn").addEventListener("click", startQuiz);
+document.querySelector("#vraag2-btn").addEventListener("click", startQuiz);
+document.querySelector("#vraag3-btn").addEventListener("click", startQuiz);
+document.querySelector("#vraag4-btn").addEventListener("click", startQuiz);
+
+//db.collection('vragen').get().then(function(resp) { return resp.json() })
+const countQuestions = 4;
 
 const vragenDB = [{
     vraag: vragCol.doc("vraag1")
@@ -38,8 +41,123 @@ const vragenDB = [{
     vraag: vragCol.doc("vraag4")
 }];
 
-vragen.addEventListener('click', startQuiz)
+//console.log(vragenDB);
 
+/*
+db.collection("vragen").doc("vraag1")
+    .get()
+    .then(function(resp) {
+        return resp.json()
+
+    })
+console.log(doc.data())*/
+
+//console.log(vragenDB[])
+
+db.collection('vragen').get().then((snapshot) => {
+    snapshot.docs.map((doc, index) => {
+        console.log(doc.data().vraag, index);
+    })
+})
+
+
+exports.getRandomQuestion = (req, res) => {
+    const id = Math.floor(Math.random() * (countQuestions) + 1)
+    var questionRef = db.collection('questions').doc(id.toString());
+    var getDoc = questionRef.get()
+        .then(doc => {
+            if (!doc.exists) {
+                throw new Error("No such document")
+            } else {
+                console.log('Document data:', doc.data());
+                res.status(200).send(question_template({
+                    id: doc.id,
+                    vraag: doc.get('vraag'),
+                    option1: doc.get('option1'),
+                    option2: doc.get('option2'),
+                    option3: doc.get('option3'),
+                    option4: doc.get('option4')
+                }));
+            }
+        })
+        .catch(err => {
+            console.log('Error getting document, err');
+
+        });
+}
+
+exports.checkanswer = (req, res) => {
+
+
+    let id = req.body.id;
+    let answer = req.body.answer;
+
+    var questionRef = db.collection('questions').doc(id.toString());
+    var getDoc = questionRef.get()
+        .then(doc => {
+            if (!doc.exists) {
+                throw new Error("No such document");
+            } else {
+                if (doc.get('answer') === answer) {
+                    res.status(200).send(correct_answer_template());
+                } else {
+                    res.status(200).send(wrong_answer_template({
+                        correct_answer: getAnswer(doc, doc.get('answer'))
+                    }));
+                }
+            }
+        })
+        .catch(err => {
+            console.log('Error getting document', err);
+            res.status(400).send('Error');
+        });
+}
+
+function getAnswer(doc, answer) {
+    let answer_text = "";
+    switch (answer) {
+        case "1":
+            answer_text = doc.get('option1');
+            break;
+        case "2":
+            answer_text = doc.get('option2');
+            break;
+        case "3":
+            answer_text = doc.get('option3');
+            break;
+        case "4":
+            answer_text = doc.get('option4');
+            break;
+    }
+    return answer_text;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let vragenNummer = 0; //runningQuestion
+
+//console.log(vragenDB);
+//vragen.addEventListener('click', renderQuestion)
+
+function volgendeVraag() {
+    if (vragenNummer >= 4) {
+
+    } else {
+        vragenNummer++;
+        renderQuestion();
+    }
+}
 
 function startQuiz() {
     //questionCounter = 0;
@@ -68,6 +186,8 @@ function renderQuestion() {
     //showQuestion(questions[runningQuestion])
 
     //let functVar = funct.value;
+    let user = vragenDB[vragenNummer];
+
 
     vragCol.doc("vraag1").get().then(function(snapshot) {
         document.getElementById('question').innerHTML = snapshot.data().vraag;
@@ -80,9 +200,10 @@ function renderQuestion() {
 
 }
 
+
 next.addEventListener('click', () => {
 
-    runningQuestion++
+    vragenNummer++
     renderQuestion();
 
 })
@@ -276,3 +397,32 @@ const questions = [{
     ]
 }]
 */
+
+/*
+db.collection('vragen').get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            console.log(doc.data())
+        })
+    })*/
+/*
+docData.forEach((item) => {
+    firestore().collection('timeSlot')
+        .where('vraag1', '==', item)
+        .get()
+        .then(function(doc) {
+            doc.forEach(function(docV) {
+                console.log(docV.data());
+            });
+        });
+});
+*/
+
+/*
+const vragenDB = vragCol.where('vraag', '==', 'afzuiging')
+
+
+vragenDB.get().then(snapsh => {
+    snapsh.docs.forEach(doc => {
+        console.log(doc.data())
+    })
+})*/
