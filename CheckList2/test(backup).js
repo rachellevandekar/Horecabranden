@@ -1,4 +1,6 @@
-/*inloffunctie*/
+/*
+inloffunctie
+ */
 const auth = firebase.auth();
 const db = firebase.firestore();
 var funcCol = db.collection("functies");
@@ -20,17 +22,12 @@ const provider = new firebase.auth.GoogleAuthProvider();
 /*functieSelector in account*/
 const functionSelector = document.getElementById('selectFunct');
 
-//const selectedFunction = [].filter.call(functionSelector.options, option => option.selected).map(option => option.value);
-
+const selectedFunction = [].filter.call(functionSelector.options, option => option.selected).map(option => option.value);
 
 
 signInBtn.onclick = () => auth.signInWithPopup(provider);
 
 signOutBtn.onclick = () => auth.signOut();
-
-let user = firebase.auth().currentUser;
-
-
 
 auth.onAuthStateChanged(user => {
     if(user){
@@ -64,9 +61,8 @@ docRef.get().then(function(docs) {
  */
 var funct, gebr, taak1, taak2, taak3, taak4;
 
-document.getElementById("showList").addEventListener("click", selectFunction);
-document.getElementById("done").addEventListener("click", test);
-//document.getElementById("updateButton").addEventListener("click", update);
+document.getElementById("select").addEventListener("click", selectFunction);
+document.getElementById("insert").addEventListener("click", test);
 
 /*
 function ready() {

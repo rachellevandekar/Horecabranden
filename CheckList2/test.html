@@ -34,17 +34,11 @@
 
 
     </script>
+
+
 </head>
 <body>
-Functie <input id="functie" type="text"><br><br>
-Gebruiker <p id="gebruiker">gebruiker</p><br><br>
 
-
-
-<input type="checkbox" id="taak1"><label for=taak1>taak1</label><br>
-<input type="checkbox" id="taak2"><label for=taak2>taak1</label><br>
-<input type="checkbox" id="taak3"><label for=taak3>taak1</label><br>
-<input type="checkbox" id="taak4"><label for=taak4>taak1</label><br>
 
 <!--
 
@@ -60,10 +54,44 @@ Taak <li id="taak4">taak4</li><br><br>
 
 <br><br>
 
+<!--
 <button id="insert">insert</button>
 <button id="select">select</button>
 
+-->
+<section id="whenSignedOut">
 
+    <button id="signInBtn" class="btn btn-primary">Sign in with Google</button>
+
+</section>
+
+<section id="whenSignedIn" hidden="true">
+
+    <div id="userDetails"></div>
+
+    Functie <input id="functie" type="text"><br><br>
+    Gebruiker <p id="gebruiker">gebruiker</p><br><br>
+
+    <input type="checkbox" id="taak1"><label for=taak1>taak1</label><br>
+    <input type="checkbox" id="taak2"><label for=taak2>taak1</label><br>
+    <input type="checkbox" id="taak3"><label for=taak3>taak1</label><br>
+    <input type="checkbox" id="taak4"><label for=taak4>taak1</label><br>
+    <!--<select id="selectFunct">
+        <option value="afwasser">Afwasser</option>
+        <option value="bediende">Bediende</option>
+        <option value="barman">Barman</option>
+        <option value="kok">Kok</option>
+    </select>
+    -->
+
+    <br><br>
+
+    <button id="signOutBtn">Sign Out</button>
+    <button id="showList">Zie lijst</button>
+    <button id="done">Klaar!</button>
+    <button id="updateButton">update</button>
+
+</section>
 
 
 
