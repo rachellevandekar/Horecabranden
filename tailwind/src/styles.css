@@ -6,27 +6,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.blad {
-    height: 100%;
-    background-size: 90%;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    z-index: -2;
-}
-
-.bladinhoud {
-    background: white;
-    padding: 0;
-    margin: auto;
-    height: auto;
-    width: 30%;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 5%;
-    bottom: 5%;
-    z-index: -1;
+.Telachtergrond {
+    width: 350px;
+    height: 600px;
 }
 
 * {
