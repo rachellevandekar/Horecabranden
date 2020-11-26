@@ -23,10 +23,10 @@ const containerOverzicht = document.getElementById('container-overzicht');
 
 const db = firebase.firestore();
 var vragCol = db.collection('vragen');
-document.querySelector("#vraag1-btn").addEventListener("click", startQuiz);
-document.querySelector("#vraag2-btn").addEventListener("click", startQuiz);
-document.querySelector("#vraag3-btn").addEventListener("click", startQuiz);
-document.querySelector("#vraag4-btn").addEventListener("click", startQuiz);
+document.querySelector("#vraag1-btn").addEventListener("click", function(){startQuiz(1);});
+document.querySelector("#vraag2-btn").addEventListener("click", function(){startQuiz(2);});
+document.querySelector("#vraag3-btn").addEventListener("click", function(){startQuiz(3);});
+document.querySelector("#vraag4-btn").addEventListener("click", function(){startQuiz(4);});
 
 //db.collection('vragen').get().then(function(resp) { return resp.json() })
 const countQuestions = 4;
@@ -54,14 +54,19 @@ console.log(doc.data())*/
 
 //console.log(vragenDB[])
 
+// vragenlijst array aanmaken
+var vragenLijst = [];
 db.collection('vragen').get().then((snapshot) => {
     snapshot.docs.map((doc, index) => {
         console.log(doc.data().vraag, index);
+
+        // elke vraag toevoegen aan vragenlijst (let op, we beginnen bij 0 met tellen)
+        vragenLijst.push(doc.data());
     })
 })
 
 
-exports.getRandomQuestion = (req, res) => {
+const getRandomQuestion = (req, res) => {
     const id = Math.floor(Math.random() * (countQuestions) + 1)
     var questionRef = db.collection('questions').doc(id.toString());
     var getDoc = questionRef.get()
@@ -86,7 +91,8 @@ exports.getRandomQuestion = (req, res) => {
         });
 }
 
-exports.checkanswer = (req, res) => {
+
+const checkanswer = (req, res) => {
 
 
     let id = req.body.id;
@@ -159,11 +165,14 @@ function volgendeVraag() {
     }
 }
 
-function startQuiz() {
+function startQuiz(startBijVraag) {
     //questionCounter = 0;
     //availableQuestions = [...questions];
     //score = 0;
-    //start.classList.add('hide')
+    //start.classList.add('hide'
+    
+    if (!startBijVraag) startBijVraag = 1;
+    vragenNummer = startBijVraag;
     containerOverzicht.classList.add('hide')
         //runningQuestion = -1;
     quiz.classList.remove('hide')
@@ -181,20 +190,21 @@ function startQuiz() {
 //console.log(vragen)
 
 // vraag laden
-function renderQuestion() {
+function renderQuestion(vraagNummer) {
 
     //showQuestion(questions[runningQuestion])
 
     //let functVar = funct.value;
     let user = vragenDB[vragenNummer];
 
+    let vraag = vragenLijst[vragenNummer-1]; // omdat we bij 0 zijn begonnen met tellen
 
     vragCol.doc("vraag1").get().then(function(snapshot) {
-        document.getElementById('question').innerHTML = snapshot.data().vraag;
-        document.getElementById('antwoordA').innerHTML = snapshot.data().a;
-        document.getElementById('antwoordB').innerHTML = snapshot.data().b;
-        document.getElementById('antwoordC').innerHTML = snapshot.data().c;
-        document.getElementById('antwoordD').innerHTML = snapshot.data().d;
+        document.getElementById('question').innerHTML =vraag.vraag;
+        document.getElementById('antwoordA').innerHTML = vraag.a;
+        document.getElementById('antwoordB').innerHTML = vraag.b;
+        document.getElementById('antwoordC').innerHTML = vraag.c;
+        document.getElementById('antwoordD').innerHTML = vraag.d;
 
     })
 
