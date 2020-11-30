@@ -15,8 +15,6 @@ const d = document.querySelector("#d");
 const MAX_QUESTIONS = 4;
 const CORRECT_BONUS = 1;
 
-
-
 const db = firebase.firestore();
 var vragCol = db.collection('vragen');
 document.querySelector("#vraag1-btn").addEventListener("click", function() { startQuiz(1); });
@@ -24,7 +22,9 @@ document.querySelector("#vraag2-btn").addEventListener("click", function() { sta
 document.querySelector("#vraag3-btn").addEventListener("click", function() { startQuiz(3); });
 document.querySelector("#vraag4-btn").addEventListener("click", function() { startQuiz(4); });
 
-
+//quiz nog niet zichtbaar maken 
+quiz.style.display = "none";
+next.style.display = " none";
 
 
 // vragenlijst array aanmaken
@@ -40,8 +40,7 @@ db.collection('vragen').get().then((snapshot) => {
 })
 
 
-let vragenNummer = 0; //runningQuestion
-
+let vragenNummer = 0;
 
 function startQuiz(startBijVraag) {
 
@@ -50,20 +49,16 @@ function startQuiz(startBijVraag) {
     availableQuestions = [...vragenLijst]
     if (!startBijVraag) startBijVraag = 1;
     vragenNummer = startBijVraag;
-    containerOverzicht.classList.add('hide')
-    quiz.classList.remove('hide')
-
-    start.classList.remove('hide')
-    next.classList.remove('hide')
+    containerOverzicht.style.display = "none";
+    quiz.style.display = "block";
+    next.style.display = " block";
     renderQuestion();
 
 }
-//const checkListElement = document.getElementById("checklist-items");
 
-//let answerButtons = document.querySelectorAll('antwoord-btn')
+
 // vraag laden
-function renderQuestion(question) {
-    //  button.document.​getElementById("answer-buttons").blur()
+function renderQuestion() {
 
     if (availableQuestions.length === 0 || vragenNummer > MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score)
@@ -73,8 +68,7 @@ function renderQuestion(question) {
 
     let vraag = vragenLijst[vragenNummer - 1]; // omdat we bij 0 zijn begonnen met tellen
 
-
-    //vragen en antwoorden inladen 
+    //vragen en antwoorden inladen
     questionElement.innerHTML = vraag.vraag;
     a.innerHTML = vraag.a;
     b.innerHTML = vraag.b;
@@ -89,48 +83,29 @@ function renderQuestion(question) {
         console.log(selectedButton);
         const antwoord = vraag.antwoord;
 
-
         if (selectedButton === antwoord) {
             document.getElementById(selectedButton).style.backgroundColor = "#adff2f";
-            //selectedButton.classList.add('correct')
-            console.log("goed")
+            console.log("goed");
             incrementScore(CORRECT_BONUS);
             scoreText.innerText = score;
             localStorage.setItem('mostRecentScore', score);
-
         } else {
-            // document.getElementById(antwoord).style.backgroundColor = "#adff2f";
             document.getElementById(selectedButton).style.backgroundColor = "#d3d3d3";
-            //selectedButton.classList.add('wrong')
-            console.log("fout")
-
+            console.log("fout");
         }
-
     }
-
-
 }
 
 
 incrementScore = num => {
     score += num;
     scoreText.innerText = score;
-
 };
 
 next.addEventListener('click', () => {
-
-
-
     vragenNummer++
     renderQuestion();
-
-
-
 });
-
-
-
 
 const finalScore = document.getElementById('finalScore');
 const mostRecentScore = localStorage.getItem('mostRecentScore');

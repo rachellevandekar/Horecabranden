@@ -33,15 +33,7 @@
         firebase.analytics();
     </script>
 
-
-
-    <link rel="stylesheet" href="style.css">
-
     <script defer src="script_quiz.js"></script>
-
-
-
-
 </head>
 
 <body>
@@ -57,57 +49,44 @@
 
 
             <div id="scoreContainer">
-
-                <p class="hud-prefix"> Score</p>
-                <h2 class="hud-main-text " id="finalScore">
-                    0
-
-                </h2>
-
+                <p> Score</p>
+                <h2 id="finalScore"> 0 </h2>
             </div>
 
             <p>Onderwerp: brandveiligheid</p>
 
             <div id="vragen-overzicht">
-                <button id="vraag1-btn" class=" vraag-btn ">Vraag 1</button>
-                <button id="vraag2-btn" class=" vraag-btn ">Vraag 2</button>
-                <button id="vraag3-btn" class="vraag-btn ">Vraag 3</button>
+                <button id="vraag1-btn" class=" vraag-btn ">Vraag 1</button><br>
+                <button id="vraag2-btn" class=" vraag-btn ">Vraag 2</button><br>
+                <button id="vraag3-btn" class="vraag-btn ">Vraag 3</button><br>
                 <button id="vraag4-btn" class=" vraag-btn ">Vraag 4</button>
             </div>
 
             <div id="scoreBtns">
                 <a href="highscores.html"> <button id="Leaderboard" class="btn-score ">Leaderboard</button></a>
-                <a href="end.html"> <button id="scoreToevoegen" class="btn-score ">Score opslaan</button></a>
             </div>
         </div>
 
 
-        <div id="quiz" class="hide">
+        <div id="quiz">
 
-            <p class="hud-prefix"> Score</p>
-            <h2 class="hud-main-text score" id="score">
-                0
-            </h2>
-            <p class="hide" id="winnaar"> Je hebt gewonnen!</p>
+            <p> Score</p>
+            <h2 class="score" id="score"> 0 </h2>
+
 
             <div id="question"> Question </div>
 
-            <!--    <form id="checklist-items">
-
-            </form>-->
-
-            <div id="answer-buttons" class="btn-grid">
-                <button id="a" type="button" class="antwoord-btn btn">Answer 1</button>
-                <button id="b" type="button" class="antwoord-btn btn">Answer 2</button>
-                <button id="c" type="button" class="antwoord-btn btn">Answer 3</button>
-                <button id="d" type="button" class="antwoord-btn btn">Answer 4</button>
+            <div id="answer-buttons">
+                <button id="a" type="button" class="antwoord-btn ">A</button><br>
+                <button id="b" type="button" class="antwoord-btn ">B</button><br>
+                <button id="c" type="button" class="antwoord-btn ">C</button><br>
+                <button id="d" type="button" class="antwoord-btn ">D</button><br>
             </div>
 
         </div>
 
         <div class="controls">
-            <button id="start-btn" class="start-btn btn hide">Overzicht</button>
-            <button id="next-btn" class="next-btn btn hide">Volgende</button>
+            <button id="next-btn" class="next-btn ">Volgende</button>
         </div>
 
 
