@@ -6,7 +6,7 @@ var vragCol = db.collection("vragen");
 const Taak = document.getElementById('geefTaakWeer');
 const takenlijst = document.getElementById('takenlijst');
 
-/*Log-in functionaliteit*/
+/*
 const whenSignedIn = document.getElementById('whenSignedIn');
 const whenSignedOut = document.getElementById('whenSignedOut');
 
@@ -17,20 +17,25 @@ const userDetails = document.getElementById('userDetails');
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
-/*functieSelector in account*/
+/*functieSelector in account
 const functionSelector = document.getElementById('selectFunct');
 
 //const selectedFunction = [].filter.call(functionSelector.options, option => option.selected).map(option => option.value);
 
 
 
+ */
+
+/*
 signInBtn.onclick = () => auth.signInWithPopup(provider);
 
 signOutBtn.onclick = () => auth.signOut();
 
 let user = firebase.auth().currentUser;
 
+ */
 
+/*
 
 auth.onAuthStateChanged(user => {
     if(user){
@@ -45,7 +50,7 @@ auth.onAuthStateChanged(user => {
         userDetails.innerHTML = '';
     }
     });
-/*
+
 docRef.get().then(function(docs) {
 
     if (docs.exists) {
@@ -115,36 +120,28 @@ function checklist(){
         createdAt: serverTimestamp(),
         taakNaam: checkedItem1,
         checked: checkedListDB.taak1,
-        gebruiker: gebruikerDB,
-        uid: GoogleUID,
-        gebruikerNaam: GoogleUserName
+        gebruiker: gebruikerDB
     });
 
     db.collection("taken").doc().set({
         createdAt: serverTimestamp(),
         taakNaam: checkedItem2,
         checked: checkedListDB.taak2,
-        gebruiker: gebruikerDB,
-        uid: GoogleUID,
-        gebruikerNaam: GoogleUserName
+        gebruiker: gebruikerDB
     });
 
     db.collection("taken").doc().set({
         createdAt: serverTimestamp(),
         taakNaam: checkedItem3,
         checked: checkedListDB.taak3,
-        gebruiker: gebruikerDB,
-        uid: GoogleUID,
-        gebruikerNaam: GoogleUserName
+        gebruiker: gebruikerDB
     });
 
     db.collection("taken").doc().set({
         createdAt: serverTimestamp(),
         taakNaam: checkedItem4,
         checked: checkedListDB.taak4,
-        gebruiker: gebruikerDB,
-        uid: GoogleUID,
-        gebruikerNaam: GoogleUserName
+        gebruiker: gebruikerDB
     });
 }
 
@@ -189,36 +186,7 @@ function checkboxNames() {
     }
 
 }
-lijstRef = db.collection("taken");
-unsubscribe = lijstRef;
 
-lijstRef.orderBy('gebruiker').limit(3)
-    .onSnapshot(querySnapshot => {
-
-
-
-
-        const items = querySnapshot.docs.map(doc => {
-
-
-
-
-           return `<li>${doc.data().gebruiker}</li>
-                    <li>${doc.data().checked}</li>
-                    <li>${doc.data().createdAt}</li>`;
-
-
-
-        });
-
-
-
-            takenlijst.innerHTML = items.join('');
-
-
-
-
-    });
 
 
 /*

@@ -1,10 +1,13 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>checklist</title>
+    <title>Score</title>
     <link rel="stylesheet" href="../public/styles.css">
+    <script defer src="end.js"></script>
+
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
@@ -31,47 +34,35 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
-
-
-
     </script>
+
+
 </head>
 
 <body class="flex h-screen bg-gradient-to-r bg-gray-400">
     <div class="Telachtergrond relative bg-white m-auto rounded-xl shadow-2xl ">
+        <div class="final-score-container">
 
-        Functie <input id="functie" type="text"><br><br>
-        Gebruiker <p id="gebruiker">gebruiker</p><br><br>
+            <div id="end">
+                <h1 id="finalScore"></h1>
+                <form>
+                    <input type="text" name="username" id="username" placeholder="username" />
 
-        <input type="checkbox" id="taak1"><label for=taak1>taak1</label><br>
-        <input type="checkbox" id="taak2"><label for=taak2>taak1</label><br>
-        <input type="checkbox" id="taak3"><label for=taak3>taak1</label><br>
-        <input type="checkbox" id="taak4"><label for=taak4>taak1</label><br>
-        <!--<select id="selectFunct">
-            <option value="afwasser">Afwasser</option>
-            <option value="bediende">Bediende</option>
-            <option value="barman">Barman</option>
-            <option value="kok">Kok</option>
-        </select>
-        -->
+                </form>
+                <button id="scoreButton">Opslaan </button>
+                <a class="btn" href="highscores.html">Leaderboard</a>
+            </div>
 
-        <br><br>
 
-        <button id="signOutBtn">Log uit</button>
-        <button id="showList">Zie lijst</button>
-        <button id="done">Klaar!</button>
-
+        </div>
         <nav class="flex justify-evenly absolute  bottom-0 min-w-full ">
             <a href="#" class=" relative bottom-0 left-0 h-20 w-1/2 bg-gray-300 rounded-bl-xl">
                 <img class="relative mx-auto pt-3 w-16" src="../afbeeldingen/checklist blauw.png" alt=""></a>
 
-            <a href="Quiz.html" class="relative bottom-0 right-0 h-20 w-1/2 bg-gray-300 rounded-br-xl "><img
-                    class="relative mx-auto pt-3 w-8" src="../afbeeldingen/quiz grijs.png" alt=""></a>
+            <a href="Quiz.html" class="relative bottom-0 right-0 h-20 w-1/2 bg-gray-300 rounded-br-xl "><img class="relative mx-auto pt-3 w-8" src="../afbeeldingen/quiz grijs.png" alt=""></a>
 
         </nav>
     </div>
 </body>
-
-<script rel="script" src="checklist.js"></script>
 
 </html>
