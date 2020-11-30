@@ -5,10 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>checklist</title>
     <link rel="stylesheet" href="../public/styles.css">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCNoXgDhIVhQ951VI4p4YvLCKLr4YJ1LD4",
+            authDomain: "sotereca2.firebaseapp.com",
+            databaseURL: "https://sotereca2.firebaseio.com",
+            projectId: "sotereca2",
+            storageBucket: "sotereca2.appspot.com",
+            messagingSenderId: "312502968781",
+            appId: "1:312502968781:web:f6a764a40280bcda13e484",
+            measurementId: "G-QBZJRXVM5E"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+
+
+    </script>
 </head>
 
 <body class="flex h-screen bg-gradient-to-r bg-gray-400">
     <div class="Telachtergrond relative bg-white m-auto rounded-xl shadow-2xl ">
+
+        Functie <input id="functie" type="text"><br><br>
+        Gebruiker <p id="gebruiker">gebruiker</p><br><br>
+
+        <input type="checkbox" id="taak1"><label for=taak1>taak1</label><br>
+        <input type="checkbox" id="taak2"><label for=taak2>taak1</label><br>
+        <input type="checkbox" id="taak3"><label for=taak3>taak1</label><br>
+        <input type="checkbox" id="taak4"><label for=taak4>taak1</label><br>
+        <!--<select id="selectFunct">
+            <option value="afwasser">Afwasser</option>
+            <option value="bediende">Bediende</option>
+            <option value="barman">Barman</option>
+            <option value="kok">Kok</option>
+        </select>
+        -->
+
+        <br><br>
+
+        <button id="signOutBtn">Log uit</button>
+        <button id="showList">Zie lijst</button>
+        <button id="done">Klaar!</button>
+
         <nav class="flex justify-evenly absolute  bottom-0 min-w-full ">
             <a href="#" class=" relative bottom-0 left-0 h-20 w-1/2 bg-gray-300 rounded-bl-xl">
                 <img class="relative mx-auto pt-3 w-16" src="../afbeeldingen/checklist blauw.png" alt=""></a>
@@ -19,5 +71,7 @@
         </nav>
     </div>
 </body>
+
+<script rel="script" src="checklist.js"></script>
 
 </html>
