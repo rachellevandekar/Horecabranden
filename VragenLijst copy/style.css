@@ -67,11 +67,11 @@ body {
 }
 
 .btn.correct {
-    background-color: greenyellow;
+    background-color: #adff2f;
 }
 
 .btn.wrong {
-    background-color: lightgray;
+    background-color: #d3d3d3;
 }
 
 .start-btn,

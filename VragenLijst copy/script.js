@@ -56,12 +56,12 @@ console.log(doc.data())*/
 
 db.collection('vragen').get().then((snapshot) => {
     snapshot.docs.map((doc, index) => {
-        console.log(doc.data().vraag, index);
+        console.log(doc.data().antwoord, index);
     })
 })
 
 
-exports.getRandomQuestion = (req, res) => {
+const getRandomQuestion = (req, res) => {
     const id = Math.floor(Math.random() * (countQuestions) + 1)
     var questionRef = db.collection('questions').doc(id.toString());
     var getDoc = questionRef.get()
@@ -86,7 +86,7 @@ exports.getRandomQuestion = (req, res) => {
         });
 }
 
-exports.checkanswer = (req, res) => {
+const checkanswer = (req, res) => {
 
 
     let id = req.body.id;
@@ -277,7 +277,7 @@ function resetState() {
 }
 */
 //const lastQuestion = questions.length - 1;
-/*
+
 // na beantwoorden vraag laat volgende knop zien
 function selectAnswer(e) {
     const selectedButton = e.target
@@ -358,7 +358,7 @@ function clearStatusClass(element) {
 
 const finalScore = document.getElementById('finalScore');
 const mostRecentScore = localStorage.getItem('mostRecentScore');
-finalScore.innerText = mostRecentScore + " vs 3";*/
+finalScore.innerText = mostRecentScore + " vs 3";
 
 
 
