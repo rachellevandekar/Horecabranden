@@ -1,32 +1,31 @@
 /*inloffunctie*/
 const auth = firebase.auth();
 const db = firebase.firestore();
-var funcCol = db.collection("functies");
-var vragCol = db.collection("vragen");
-const Taak = document.getElementById('geefTaakWeer');
-const takenlijst = document.getElementById('takenlijst');
-
-/*Log-in functionaliteit*/
-const whenSignedIn = document.getElementById('whenSignedIn');
-const whenSignedOut = document.getElementById('whenSignedOut');
 
 const signInBtn = document.getElementById('signInBtn');
-const signOutBtn = document.getElementById('signOutBtn');
+//const signOutBtn = document.getElementById('signOutBtn');
 
-const userDetails = document.getElementById('userDetails');
+//const userDetails = document.getElementById('userDetails');
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
-/*functieSelector in account*/
-const functionSelector = document.getElementById('selectFunct');
 
 //const selectedFunction = [].filter.call(functionSelector.options, option => option.selected).map(option => option.value);
 
+function pageRedirect(){
+    let delay = 20000; // time in milliseconds
 
+    // Display message
 
-signInBtn.onclick = () => auth.signInWithPopup(provider);
+    setTimeout(function(){
+        window.location.assign('Welkom2.html');
+    },delay);
 
-signOutBtn.onclick = () => auth.signOut();
+}
+
+signInBtn.onclick = () => auth.signInWithPopup(provider)
+pageRedirect()
+;
 
 let user = firebase.auth().currentUser;
 
@@ -34,16 +33,11 @@ let user = firebase.auth().currentUser;
 
 auth.onAuthStateChanged(user => {
     if(user){
-        whenSignedIn.hidden = false;
-        whenSignedOut.hidden = true;
-        userDetails.innerHTML = `<h3>Hallo ${user.displayName}!</h3> <p>User ID: ${user.uid}</p>`;
+        userDetails = user.displayName;
         GoogleUID = user.uid;
-        GoogleUserName = user.displayName;
-        localStorage.setItem(GoogleUserName);
-    } else {
-        whenSignedIn.hidden = true;
-        whenSignedOut.hidden = false;
-        userDetails.innerHTML = '';
+
+        localStorage.setItem('userDetails', userDetails);
+        localStorage.setItem('GoogleUID', GoogleUID);
     }
     });
 /*
@@ -62,7 +56,7 @@ docRef.get().then(function(docs) {
     console.log("Error getting document:", error);
 });
 
- */
+
 var funct, gebr, taak1, taak2, taak3, taak4;
 
 document.getElementById("showList").addEventListener("click", selectFunction);
@@ -79,8 +73,14 @@ function ready() {
     taak4 = document.getElementById('taak4');
 }
 
+
+
  */
+
+/*
 taak1 = document.getElementById("taak1");
+
+
 taak2 = document.getElementById("taak2");
 taak3 = document.getElementById("taak3");
 taak4 = document.getElementById("taak4");

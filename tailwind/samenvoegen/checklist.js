@@ -5,6 +5,8 @@ var funcCol = db.collection("functies");
 var vragCol = db.collection("vragen");
 const Taak = document.getElementById('geefTaakWeer');
 const takenlijst = document.getElementById('takenlijst');
+const gebrInfoLocalStorage = localStorage.getItem('userDetails');
+const GoogleUIDLocalStorage = localStorage.getItem('GoogleUID');
 
 /*
 const whenSignedIn = document.getElementById('whenSignedIn');
@@ -120,28 +122,36 @@ function checklist(){
         createdAt: serverTimestamp(),
         taakNaam: checkedItem1,
         checked: checkedListDB.taak1,
-        gebruiker: gebruikerDB
+        gebruiker: gebruikerDB,
+        GoogleGebruiker: gebrInfoLocalStorage,
+        UID: GoogleUIDLocalStorage
     });
 
     db.collection("taken").doc().set({
         createdAt: serverTimestamp(),
         taakNaam: checkedItem2,
         checked: checkedListDB.taak2,
-        gebruiker: gebruikerDB
+        gebruiker: gebruikerDB,
+        GoogleGebruiker: gebrInfoLocalStorage,
+        UID: GoogleUIDLocalStorage
     });
 
     db.collection("taken").doc().set({
         createdAt: serverTimestamp(),
         taakNaam: checkedItem3,
         checked: checkedListDB.taak3,
-        gebruiker: gebruikerDB
+        gebruiker: gebruikerDB,
+        GoogleGebruiker: gebrInfoLocalStorage,
+        UID: GoogleUIDLocalStorage
     });
 
     db.collection("taken").doc().set({
         createdAt: serverTimestamp(),
         taakNaam: checkedItem4,
         checked: checkedListDB.taak4,
-        gebruiker: gebruikerDB
+        gebruiker: gebruikerDB,
+        GoogleGebruiker: gebrInfoLocalStorage,
+        UID: GoogleUIDLocalStorage
     });
 }
 
