@@ -82,13 +82,13 @@ function renderQuestion() {
         const antwoord = vraag.antwoord;
 
         if (selectedButton === antwoord) {
-            document.getElementById(selectedButton).style.backgroundColor = "#adff2f";
+            // document.getElementById(selectedButton).style.backgroundColor = "#adff2f";
             console.log("goed");
             incrementScore(CORRECT_BONUS);
             scoreText.innerText = score;
             localStorage.setItem('mostRecentScore', score);
         } else {
-            document.getElementById(selectedButton).style.backgroundColor = "#d3d3d3";
+            // document.getElementById(selectedButton).style.backgroundColor = "#d3d3d3";
             console.log("fout");
         }
     }

@@ -38,51 +38,63 @@
 
 <body class="flex h-screen bg-gradient-to-r bg-gray-400">
     <div class="Telachtergrond relative bg-white m-auto rounded-xl shadow-2xl ">
+        
 
         <div class="container-overzicht" id="container-overzicht">
+<div class="flex-auto text-center ">
+            <img class="w-40 mx-auto pt-12 " src="../afbeeldingen/quiz.png" />
 
-            <div class="collega">
+        </div>
+            <div class="collega flex-auto text-center pt-4">
                 <p>Je strijd tegen: </p>
 
             </div>
 
 
-            <div id="scoreContainer">
+            <div class="text-5xl mx-auto text-center pt-3" id="scoreContainer">
                 <h2 id="finalScore"> 0 </h2>
             </div>
 
-            <p>Onderwerp: brandveiligheid</p>
-
-            <div id="vragen-overzicht">
-                <button id="vraag1-btn" class=" vraag-btn ">Vraag 1/4</button>
-
+            <p class="mx-auto text-center pt-3">Onderwerp: brandveiligheid</p>
+            <div class="pl-8 pr-8  pt-8 text-center ">
+                <div class="bg-color-1 border  hover:bg-color-4 hover:text-white text-white font-black pl-24 pr-24 pt-3 pb-3  rounded-xl "
+                    id="vragen-overzicht">
+                    <button id="vraag1-btn" class=" vraag-btn ">Vraag 1/4</button>
+                </div>
             </div>
 
-            <div id="scoreBtns">
-                <a href="highscores.html"> <button id="Leaderboard" class="btn-score ">Leaderboard</button></a>
+
+            <div class="pl-8 pr-8 pt-8 text-center" id="scoreBtns">
+                <a class="bg-color-1 border  hover:bg-color-4 hover:text-white text-white font-black pl-24 pr-24 pt-3 pb-3  rounded-xl " href="highscores.html"> <button id="Leaderboard" class="btn-score ">Leaderboard</button></a>
             </div>
         </div>
 
 
         <div id="quiz">
 
-            <p> Score</p>
-            <h2 class="score" id="score"> 0 </h2>
+            <p class="text-center"> Score</p>
+            <h2 class="score text-center" id="score"> 0 </h2>
 
+            <div class="flex-auto text-center ">
+                <img class="w-64 mx-auto border-4 border-color-1 rounded-xl" src="../afbeeldingen/vuur.png" />
+    
+            </div>
 
-            <div id="question"> Question </div>
+<div class= " pl-12 pr-12 pt-3 text-center">
+    <div class="bg-color-1 border   text-white font-black pl-2 pr-2 pt-3 pb-3  rounded-xl " id="question"> Question </div>
+</div>
+            
 
-            <div id="answer-buttons">
-                <button id="a" type="button" class="antwoord-btn ">A</button><br>
-                <button id="b" type="button" class="antwoord-btn ">B</button><br>
-                <button id="c" type="button" class="antwoord-btn ">C</button><br>
-                <button id="d" type="button" class="antwoord-btn ">D</button><br>
+            <div class="pl-12 pr-12 pt-3 text-center" id="answer-buttons">
+                <button class="bg-color-4 border hover:bg-color-1  text-white  w-full pl-1 pt-1 pb-1  rounded-xl " id="a" type="button" class="antwoord-btn ">A</button><br>
+                <button class="bg-color-4 border hover:bg-color-1  text-white  w-full pl-1 pr-1 pt-1 pb-1  rounded-xl " id="b" type="button" class="antwoord-btn ">B</button><br>
+                <button class="bg-color-4 border hover:bg-color-1  text-white  w-full pl-1 pr-1 pt-1 pb-1  rounded-xl " id="c" type="button" class="antwoord-btn ">C</button><br>
+                <button class="bg-color-4 border hover:bg-color-1  text-white w-full pl-1 pr-1 pt-1 pb-1  rounded-xl " id="d" type="button" class="antwoord-btn ">D</button><br>
             </div>
 
         </div>
-
-        <div class="controls">
-            <button id="next-btn" class="next-btn ">Volgende</button>
+        <div class="pl-20 pr-20 pt-3 text-center">
+            <button id="next-btn" class="bg-color-1 border hover:bg-color-4  text-white  w-full pl-1 pt-1 pb-1  rounded-xl ">Volgende</button>
         </div>
 
 
@@ -93,18 +105,11 @@
             <a href="Checklist.html" class=" relative bottom-0 left-0 h-20 w-1/2 bg-gray-300 rounded-bl-xl">
                 <img class="relative mx-auto pt-3 w-16" src="../afbeeldingen/checklist grijs.png" alt=""></a>
 
-            <a href="#" class="relative bottom-0 right-0 h-20 w-1/2 bg-gray-300 rounded-br-xl "><img class="relative mx-auto pt-3 w-8" src="../afbeeldingen/quiz blauw.png" alt=""></a>
+            <a href="#" class="relative bottom-0 right-0 h-20 w-1/2 bg-gray-300 rounded-br-xl "><img
+                    class="relative mx-auto pt-3 w-8" src="../afbeeldingen/quiz blauw.png" alt=""></a>
 
         </nav>
     </div>
-
-
-
-
-
-
-
-
 </body>
 
 </html>
