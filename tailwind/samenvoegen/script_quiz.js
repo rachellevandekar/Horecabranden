@@ -18,9 +18,7 @@ const CORRECT_BONUS = 1;
 const db = firebase.firestore();
 var vragCol = db.collection('vragen');
 document.querySelector("#vraag1-btn").addEventListener("click", function() { startQuiz(1); });
-document.querySelector("#vraag2-btn").addEventListener("click", function() { startQuiz(2); });
-document.querySelector("#vraag3-btn").addEventListener("click", function() { startQuiz(3); });
-document.querySelector("#vraag4-btn").addEventListener("click", function() { startQuiz(4); });
+
 
 //quiz nog niet zichtbaar maken 
 quiz.style.display = "none";
