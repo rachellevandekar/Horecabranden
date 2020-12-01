@@ -40,13 +40,26 @@
 <body class="flex h-screen bg-gradient-to-r bg-gray-400">
     <div class="Telachtergrond relative bg-white m-auto rounded-xl shadow-2xl ">
 
-        <p id="gebruiker"></p>
-        <p id="functieWeergave"></p><br><br>
+        <div class="flex items-center pl-4  ">
+            <div class="pl-12 pt-12 pr-6 w-40  "><img src="../afbeeldingen/guy.png" alt=""></div>
+            <div class="h-12 pt-6 ">
+                <p id="gebruiker" class="w-16 h-6 text-color-1"></p>
+                <p id="functieWeergave" class="w-16 h-6 text-color-4"></p>
+            </div>
+        </div>
 
-        <input type="checkbox" id="taak1"><label for=taak1>taak1</label><br>
-        <input type="checkbox" id="taak2"><label for=taak2>taak1</label><br>
-        <input type="checkbox" id="taak3"><label for=taak3>taak1</label><br>
-        <input type="checkbox" id="taak4"><label for=taak4>taak1</label><br>
+
+        <div class="pl-20 pt-4">
+            <div class="pl-24 pt-6 round">
+                <input type="checkbox" id="taak1"><label class="pl-6 pt-2" for=taak1>taak1</label></div>
+            <div class="pl-24 pt-6 round">
+                <input type="checkbox" id="taak2"><label class="pl-6 pt-2" for=taak2>taak2</label></div>
+            <div class="pl-24 pt-6 round">
+                <input type="checkbox" id="taak3"><label class="pl-6 pt-2" for=taak3>taak3</label></div>
+            <div class="pl-24 pt-6 round">
+                <input type="checkbox" id="taak4"><label class="pl-6 pt-2" for=taak4>taak4</label></div>
+        </div>
+
         <!--<select id="selectFunct">
             <option value="afwasser">Afwasser</option>
             <option value="bediende">Bediende</option>
@@ -54,14 +67,13 @@
             <option value="kok">Kok</option>
         </select>
         -->
+        <div class="flex justify-start  min-w-full">
+        <input id="functie" type="text">
+        <button id="showList" class="absolute pb-40 pr-6 bottom-0 right-0 ">Zie lijst</button></div>
 
-        <br><br>
+        <div class="flex justify-end pt-32 pr-6 min-w-full"> <button id="done"
+                class="relative bottom-0 right-0"><img src="../afbeeldingen/vinkje.png" alt=""></button></div>
 
-
-
-        <button id="done">Klaar!</button>
-        <input id="functie" type="text"><br><br>
-        <button id="showList">Zie lijst</button>
 
         <nav class="flex justify-evenly absolute  bottom-0 min-w-full ">
             <a href="#" class=" relative bottom-0 left-0 h-20 w-1/2 bg-gray-300 rounded-bl-xl">
@@ -71,6 +83,7 @@
                     class="relative mx-auto pt-3 w-8" src="../afbeeldingen/quiz grijs.png" alt=""></a>
 
         </nav>
+
     </div>
 </body>
 
