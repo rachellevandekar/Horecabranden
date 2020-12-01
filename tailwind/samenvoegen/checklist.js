@@ -7,6 +7,9 @@ const Taak = document.getElementById('geefTaakWeer');
 const takenlijst = document.getElementById('takenlijst');
 const gebrInfoLocalStorage = localStorage.getItem('userDetails');
 const GoogleUIDLocalStorage = localStorage.getItem('GoogleUID');
+const gebruiker = document.getElementById('gebruiker');
+
+
 
 /*
 const whenSignedIn = document.getElementById('whenSignedIn');
@@ -75,6 +78,8 @@ document.getElementById("showList").addEventListener("click", selectFunction);
 document.getElementById("done").addEventListener("click", checklist);
 
 
+gebruiker.innerHTML = gebrInfoLocalStorage;
+
 /*
 function ready() {
 
@@ -107,13 +112,12 @@ function selectFunction() {
     let functVar = funct.value;
 
     funcCol.doc(functVar).get().then(function(snapshot) {
-        gebruikerDB = document.getElementById('gebruiker').innerHTML = snapshot.data().gebruiker;
+        gebruikerDB = document.getElementById('functieWeergave').innerHTML = snapshot.data().functie;
         taak1DB = document.querySelector('label[for="taak1"]').innerHTML= snapshot.data().taak1;
         taak2DB = document.querySelector('label[for="taak2"]').innerHTML = snapshot.data().taak2;
         taak3DB = document.querySelector('label[for="taak3"]').innerHTML = snapshot.data().taak3;
         taak4DB = document.querySelector('label[for="taak4"]').innerHTML = snapshot.data().taak4;
     });
-    document.getElementById('') = "";
 }
 
 function checklist(){
