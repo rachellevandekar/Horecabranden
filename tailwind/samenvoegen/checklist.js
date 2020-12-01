@@ -105,14 +105,15 @@ let taak1DB, taak2DB, taak3DB, taak4DB;
 function selectFunction() {
     //ready();
     let functVar = funct.value;
+
     funcCol.doc(functVar).get().then(function(snapshot) {
         gebruikerDB = document.getElementById('gebruiker').innerHTML = snapshot.data().gebruiker;
         taak1DB = document.querySelector('label[for="taak1"]').innerHTML= snapshot.data().taak1;
         taak2DB = document.querySelector('label[for="taak2"]').innerHTML = snapshot.data().taak2;
         taak3DB = document.querySelector('label[for="taak3"]').innerHTML = snapshot.data().taak3;
         taak4DB = document.querySelector('label[for="taak4"]').innerHTML = snapshot.data().taak4;
-    })
-
+    });
+    document.getElementById('') = "";
 }
 
 function checklist(){
