@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checklist</title>
+    <link rel="stylesheet" href="../public/styles.css">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCNoXgDhIVhQ951VI4p4YvLCKLr4YJ1LD4",
+            authDomain: "sotereca2.firebaseapp.com",
+            databaseURL: "https://sotereca2.firebaseio.com",
+            projectId: "sotereca2",
+            storageBucket: "sotereca2.appspot.com",
+            messagingSenderId: "312502968781",
+            appId: "1:312502968781:web:f6a764a40280bcda13e484",
+            measurementId: "G-QBZJRXVM5E"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+
+
+    </script>
+</head>
+
+<body class="flex h-screen  bg-gray-400">
+    <div class="Telachtergrond relative bg-white m-auto rounded-xl shadow-2xl ">
+
+        <div class="flex items-center pl-4  ">
+            <div class="pl-12 pt-12 pr-6 w-40  "><img src="../afbeeldingen/guy.png" alt=""></div>
+            <div class="h-12 pt-6 ">
+                <p id="gebruiker" class="w-auto h-6 text-color-1"></p>
+                <p id="functieWeergave" class="w-auto h-6 text-color-4"></p>
+            </div>
+        </div>
+
+
+
+        <div class="pl-24 pt-1">
+            <div class="pl-1 pt-5 ">
+                <input type="checkbox" class="w-6 h-6" id="taak1"><label class="pl-6 pt-2" for=taak1>taak 1</label></div>
+            <div class="pl-1 pt-5 ">
+                <input type="checkbox" class="w-6 h-6" id="taak2"><label class="pl-6 pt-2 " for=taak2>taak 2</label></div>
+            <div class="pl-1 pt-5 ">
+                <input type="checkbox" class="w-6 h-6" id="taak3"><label class="pl-6 pt-2" for=taak3>taak 3</label></div>
+            <div class="pl-1 pt-5 ">
+                <input type="checkbox" class="w-6 h-6" id="taak4"><label class="pl-6 pt-2" for=taak4>taak 4</label></div>
+
+        </div>
+
+        <!--<select id="selectFunct">
+            <option value="afwasser">Afwasser</option>
+            <option value="bediende">Bediende</option>
+            <option value="barman">Barman</option>
+            <option value="kok">Kok</option>
+        </select>
+        -->
+        <div class="min-w-full pt-32 pb-12 relative ">
+        
+        <input id="functie" type="text" class=" pl-2 absolute  bottom-0 left-0 ">
+        <button id="showList" class="absolute  right-0 bottom-0 pt-2 pr-20    ">Zie lijst</button>
+        <div class="flex justify-end pt- pr-6 min-w-full"> <button id="done"
+                class="absolute bottom-0 right-0 pr-2"><img src="../afbeeldingen/vinkje.png" alt=""></button></div></div>
+
+
+        <nav class="flex justify-evenly absolute  bottom-0 min-w-full ">
+            <a href="#" class=" relative bottom-0 left-0 h-20 w-1/2 bg-gray-300 rounded-bl-xl">
+                <img class="relative mx-auto pt-3 w-16" src="../afbeeldingen/checklist blauw.png" alt=""></a>
+
+            <a href="Quiz.html" class="relative bottom-0 right-0 h-20 w-1/2 bg-gray-300 rounded-br-xl "><img
+                    class="relative mx-auto pt-3 w-8" src="../afbeeldingen/quiz grijs.png" alt=""></a>
+
+        </nav>
+
+    </div>
+</body>
+
+<script rel="script" src="checklist.js"></script>
+
+</html>
